@@ -93,9 +93,12 @@ module.exports = class FileTreeAlphaHuePlugin extends Plugin {
     styleEl.id = 'obsidian-file-tree-alpha-hue';
 
     let cssRules = `
-      /* Universal Reset: Clear transition timelines and baseline parameters across title text wrappers */
-      .tree-item-self[data-alpha-char] .tree-item-inner {
-        transition: color 0.2s ease-in-out !important;
+      /* Clear transition configurations across text nodes and sidebar folder icons */
+      .tree-item-self[data-alpha-char] .tree-item-inner,
+      .tree-item-self[data-alpha-char] .nav-folder-title-content,
+      .tree-item-self[data-alpha-char] .nav-file-title-content,
+      .tree-item-self[data-alpha-char] .collapse-icon svg {
+        transition: color 0.2s ease-in-out, stroke 0.2s ease-in-out !important;
       }
     `;
 
@@ -106,24 +109,35 @@ module.exports = class FileTreeAlphaHuePlugin extends Plugin {
       const hue = Math.round((i / alphabet.length) * 360);
       
       // Calculate a 10% darker resting state and full-brightness hover targets
-      const restingLightness = '35%';
-      const hoverLightness = '45%';
+      const restingLightness = '50%';
+      const hoverLightness = '65%';
 
       cssRules += `
-        /* Resting State Rule: Muted alpha coloring */
-        .tree-item-self[data-alpha-char="${char}"] .tree-item-inner {
+        /* Resting State Rules: Targets explicit text and icon wrappers to override themes */
+        .tree-item-self[data-alpha-char="${char}"] .tree-item-inner,
+        .tree-item-self[data-alpha-char="${char}"] .nav-folder-title-content,
+        .tree-item-self[data-alpha-char="${char}"] .nav-file-title-content {
           color: hsl(${hue}, 80%, ${restingLightness}) !important;
         }
+        .tree-item-self[data-alpha-char="${char}"] .collapse-icon svg {
+          stroke: hsl(${hue}, 80%, ${restingLightness}) !important;
+        }
 
-        /* Hover State Trigger: Lightens up text content instantly to full brightness */
-        .tree-item-self[data-alpha-char="${char}"]:hover .tree-item-inner {
+        /* Hover State Triggers: Lightens text and folder icons up to normal brightness levels */
+        .tree-item-self[data-alpha-char="${char}"]:hover .tree-item-inner,
+        .tree-item-self[data-alpha-char="${char}"]:hover .nav-folder-title-content,
+        .tree-item-self[data-alpha-char="${char}"]:hover .nav-file-title-content {
           color: hsl(${hue}, 85%, ${hoverLightness}) !important;
+        }
+        .tree-item-self[data-alpha-char="${char}"]:hover .collapse-icon svg {
+          stroke: hsl(${hue}, 85%, ${hoverLightness}) !important;
         }
       `;
     }
 
     styleEl.innerHTML = cssRules;
     document.head.appendChild(styleEl);
-    console.log('[File Tree Alpha Hue] Alphabetical HSL theme spectrum stylesheets successfully registered.');
+    console.log('[File Tree Alpha Hue] Enhanced text and icon selector style rules successfully registered.');
   }
+
 };

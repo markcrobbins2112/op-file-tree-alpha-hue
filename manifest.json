@@ -1,6 +1,6 @@
 {
     "id": "file-tree-alpha-hue",
-    "name": "!File Tree Alpha Hue",
+    "name": "File Tree Alpha Hue",
     "version": "1.0.0",
     "minAppVersion": "1.0.0",
     "description": "Colors file explorer items according to their first alphabetical character using custom data attributes and muted resting color states.",

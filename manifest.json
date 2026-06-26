@@ -4,8 +4,9 @@
     "version": "1.0.0",
     "minAppVersion": "1.0.0",
     "description": "Colors file explorer items according to their first alphabetical character using custom data attributes and muted resting color states.",
-    "author": "AI Collaborator",
-    "authorUrl": "https://obsidian.md",
+    "publisher": "markcrobbins",
+    "author": "markcrobbins",
+    "authorUrl": "https://github.com/markcrobbins2112",
     "isDesktopOnly": false
   }
   

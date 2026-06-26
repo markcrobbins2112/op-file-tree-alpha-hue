@@ -4,6 +4,7 @@ Colors file explorer items according to their first alphabetical character using
 
 ![icon](icon.jpg)
 ![tree](tree.jpg)
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/markcrobbins)
 
 ## 📑 AI Primary Files
 - 🔹 [AGENTS.md](AGENTS.md)

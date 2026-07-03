@@ -4,7 +4,6 @@
     "version": "1.0.0",
     "minAppVersion": "1.0.0",
     "description": "Colors file explorer items according to their first alphabetical character using custom data attributes and muted resting color states.",
-    "publisher": "markcrobbins",
     "author": "markcrobbins",
     "authorUrl": "https://github.com/markcrobbins2112",
     "isDesktopOnly": false

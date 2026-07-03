@@ -2,7 +2,7 @@
 title: README
 ---
 
-# README
+# File Tree Alpha Hue
 
 Colors file explorer items according to their first alphabetical character using custom data attributes and muted resting color states.
 

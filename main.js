@@ -38,7 +38,16 @@ module.exports = class FileTreeAlphaHuePlugin extends Plugin {
   }
 
   initializeAlphaObserver() {
-    // Intercepts newly rendered file rows right as a human expands directory trees
+    // 1. Find the sidebar element cleanly
+    const sidebarContainer = document.querySelector('.nav-files-container');
+
+    // 2. If the sidebar isn't fully loaded yet, wait 500ms and try again
+    if (!sidebarContainer) {
+      setTimeout(() => this.initializeAlphaObserver(), 500);
+      return;
+    }
+
+    // 3. Set up the observer to ONLY watch the sidebar structure
     this.observer = new MutationObserver((mutations) => {
       let shouldProcess = false;
       for (let i = 0; i < mutations.length; i++) {
@@ -52,10 +61,13 @@ module.exports = class FileTreeAlphaHuePlugin extends Plugin {
       }
     });
 
-    this.observer.observe(document.body, {
+    // 4. Critical Fix: We observe 'sidebarContainer' instead of 'document.body'
+    this.observer.observe(sidebarContainer, {
       childList: true,
       subtree: true
     });
+    
+    console.log('[File Tree Alpha Hue] Targeted sidebar observer successfully locked on.');
   }
 
   calculateAlphaCharacters() {
